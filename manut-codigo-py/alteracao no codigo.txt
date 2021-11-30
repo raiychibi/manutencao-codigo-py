@@ -1,0 +1,36 @@
+Alterações no código:
+1- nome do value de "preco" = para preco_valor
+2- Alterar o by = 'Nome_loja' para Cod_loja, ordenando assim por código de loja
+>>>for value in df_lojas.sort_values(by='Cod_loja').itertuples():
+3- Adicionar ordenação dos produtos por nome de produto com o .sort_values e by= Nome_Produto
+>>>df_produtos_filtro = df_produtos_filtro.sort_values(by='Nome_Produto')
+
+Emissão do novo relatório dos produtos cadastrados, ordenados por Nome do Produto: 
+>>def produtos_nome_produto():
+
+1- criação de uma nova função apenas alterando alguns valores da primeira ja existente.
+
+2- adicionar nomeProd = str(value.Nome_Produto)
+remover nomeLoja
+
+3- adicionar precoProd = str(value.preco_valor)
+
+4- alterar a concatenação no print para : 
+
+>>print(nomeProd + " - " + precoProd)
+
+5- alterar df_produtos_filtro para df_lojas_filtro onde o .loc ficaria: 
+
+>>df_lojas.loc[df_lojas['Cod_loja'] == int(value.Cod_loja)]['Nome_loja']
+
+6- manter o .to_string, apenas alterando o nome
+>>produtos_loj = df_lojas_filtro.to_string(header=False, index=False)
+
+7- printar concatenação de codLoja + produtos_loj
+
+>>print(codLoja + " " + produtos_loj)
+
+8- adicionar na função menu a opção 5 como Sair e 4 como novo relatório, e adicionar no elif: 
+>>         elif (escolha == '4'):
+            produtos_nome_produto()
+
